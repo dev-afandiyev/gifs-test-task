@@ -1,0 +1,1 @@
+Hi, glad you're here. I wanted to say that the idea from this test task once formed the basis of a very large project. So, I want to say thank you. I hope you enjoy reviewing the code. Of course, I didn't implement everything I wanted, but I enjoyed the process. And for the first time in many years, I used Koin again.

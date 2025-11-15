@@ -1,0 +1,11 @@
+<resources>
+    <string name="app_name">Gifs App</string>
+    <string name="arrow_left">Arrow left</string>
+    <string name="back">Back</string>
+    <string name="placeholder">Placeholder</string>
+    <string name="search">Search</string>
+    <string name="delete">delete</string>
+    <string name="share">share</string>
+    <string name="download">download</string>
+    <string name="unknown">Unknown title</string>
+</resources>

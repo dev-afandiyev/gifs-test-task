@@ -8,4 +8,5 @@
     <string name="share">share</string>
     <string name="download">download</string>
     <string name="unknown">Unknown title</string>
+    <string name="gif_download">Downloading GIF…</string>
 </resources>

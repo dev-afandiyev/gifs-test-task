@@ -11,6 +11,7 @@ import android.content.Context
 import android.os.Environment
 import android.widget.Toast
 import androidx.core.net.toUri
+import com.media.gifsapp.R
 
 object GifDownloader {
 
@@ -28,6 +29,7 @@ object GifDownloader {
         val dm = context.getSystemService(Context.DOWNLOAD_SERVICE) as DownloadManager
         dm.enqueue(request)
 
-        Toast.makeText(context, "Downloading GIF...", Toast.LENGTH_SHORT).show()
+        Toast.makeText(context, context.getString(R.string.gif_download), Toast.LENGTH_SHORT).show()
     }
+
 }

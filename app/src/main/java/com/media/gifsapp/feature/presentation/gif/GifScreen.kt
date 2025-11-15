@@ -86,7 +86,7 @@ fun GifScreenContent(
     if (isPortrait) {
         Column(modifier = modifier, verticalArrangement = arrangement) {
             CustomBackButton { onIntent(GifScreenIntent.GoBack) }
-            TitleAndActions(uiState, onIntent)
+            TitleAndActions(uiState, imageUrl, onIntent)
             CustomImageView(modifier = Modifier
                 .fillMaxWidth()
                 .weight(1f), imageUrl = imageUrl)
@@ -98,14 +98,14 @@ fun GifScreenContent(
                 .weight(0.5f)
                 .fillMaxHeight(), imageUrl = imageUrl)
             Column(verticalArrangement = arrangement) {
-                TitleAndActions(uiState, onIntent)
+                TitleAndActions(uiState, imageUrl, onIntent)
             }
         }
     }
 }
 
 @Composable
-fun TitleAndActions(uiState: GifScreenUiState, onIntent: (GifScreenIntent) -> Unit) {
+fun TitleAndActions(uiState: GifScreenUiState, imageUrl: String?, onIntent: (GifScreenIntent) -> Unit) {
     val context = LocalContext.current
 
     CustomText(
@@ -123,11 +123,11 @@ fun TitleAndActions(uiState: GifScreenUiState, onIntent: (GifScreenIntent) -> Un
             painter = painterResource(R.drawable.ic_share),
             contentDescription = stringResource(R.string.share)
         ) {
-            val gifUrl = uiState.imageUrl ?: return@CustomIconButton
+            val imageUrl = imageUrl ?: return@CustomIconButton
 
             val shareIntent = Intent(Intent.ACTION_SEND).apply {
                 type = "text/plain"
-                putExtra(Intent.EXTRA_TEXT, gifUrl)
+                putExtra(Intent.EXTRA_TEXT, imageUrl)
             }
 
             context.startActivity(Intent.createChooser(shareIntent, context.getString(R.string.unknown)))
@@ -138,8 +138,9 @@ fun TitleAndActions(uiState: GifScreenUiState, onIntent: (GifScreenIntent) -> Un
             contentDescription = stringResource(R.string.download)
         ) {
             //MARK: Not the best solution, but I'm tired, boss.
-            val gifUrl =  uiState.imageUrl ?: return@CustomIconButton
-            GifDownloader.downloadGif(context, gifUrl)
+            val imageUrl = imageUrl ?: return@CustomIconButton
+
+            GifDownloader.downloadGif(context, imageUrl)
         }
     }
 }
